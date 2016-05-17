@@ -1,0 +1,2 @@
+MainPackage=C:\Users\cosnita.ADOBENET\tutorials\ChakraCoreGettingStarted\x64\Release\ChakraCoreGettingStarted\ChakraCoreGettingStarted_1.0.0.0_x64.appx
+SymbolPackage=C:\Users\cosnita.ADOBENET\tutorials\ChakraCoreGettingStarted\AppPackages\ChakraCoreGettingStarted\ChakraCoreGettingStarted_1.0.0.0_Test\ChakraCoreGettingStarted_1.0.0.0_x64.appxsym
