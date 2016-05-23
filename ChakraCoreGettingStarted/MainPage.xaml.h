@@ -19,10 +19,12 @@ namespace ChakraCoreGettingStarted
         property Platform::String^ HelloMsg;
 	public:
 		MainPage();
+        virtual ~MainPage();
 
     private:
-        jsutils::ChakraTest chakraTest_;
+        jsutils::ChakraTest* chakraTest_;
     private:
         void button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+        void btnLaunchApp_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
     };
 }

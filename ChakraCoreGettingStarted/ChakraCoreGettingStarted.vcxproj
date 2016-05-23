@@ -207,6 +207,11 @@
       <Project>{ef609bf3-74e1-4a3d-9c98-43899c4085fb}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AppxPackagePayload Include="js\**\*">
+      <TargetPath>js\%(RecursiveDir)\%(Filename)%(Extension)</TargetPath>
+    </AppxPackagePayload>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

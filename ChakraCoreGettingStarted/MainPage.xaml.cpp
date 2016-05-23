@@ -27,18 +27,28 @@ static DependencyProperty^ HelloMsgProperty = DependencyProperty::RegisterAttach
     ref new PropertyMetadata(nullptr)
 );
 
-MainPage::MainPage()
-{
-	InitializeComponent();
+MainPage::MainPage() {
+    InitializeComponent();
+
+    chakraTest_ = new jsutils::ChakraTest(helloMsg);
 
     DataContext = this;
 }
 
+MainPage::~MainPage() {
+    delete chakraTest_;
+}
 
 void ChakraCoreGettingStarted::MainPage::button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-    auto result = chakraTest_.sayHello();
+    auto result = chakraTest_->sayHello();
     String^ msg = ref new String(result.c_str());
 
     SetValue(HelloMsgProperty, msg);
+}
+
+
+void ChakraCoreGettingStarted::MainPage::btnLaunchApp_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+    chakraTest_->runApp("js/app.js");
 }
