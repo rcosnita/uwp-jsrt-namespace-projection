@@ -8,6 +8,11 @@
 #include "MainPage.g.h"
 #include "ChakraTest.h"
 
+#include <thread>
+
+using namespace Platform;
+using namespace WindowsRuntimeComponent1::Events;
+
 namespace ChakraCoreGettingStarted
 {
 	/// <summary>
@@ -16,13 +21,23 @@ namespace ChakraCoreGettingStarted
 	public ref class MainPage sealed
 	{
     public:
-        property Platform::String^ HelloMsg;
+        property String^ HelloMsg {
+            String^ get();
+            void set(String^ value);
+        }
+
+        property String^ MsgForJs {
+            String^ get();
+            void set(String^ value);
+        }
 	public:
 		MainPage();
         virtual ~MainPage();
 
     private:
+        std::thread appThread_;
         jsutils::ChakraTest* chakraTest_;
+        EventEmitter^ eventEmitter_;
     private:
         void button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
         void btnLaunchApp_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);

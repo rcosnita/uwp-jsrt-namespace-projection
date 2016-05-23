@@ -9,8 +9,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Button x:Name="button" Content="Say hello with Chakra" HorizontalAlignment="Left" Height="65" Margin="40,85,0,0" VerticalAlignment="Top" Width="220" Click="button_Click"/>
-        <TextBox x:Name="helloMsg" HorizontalAlignment="Left" Height="15" Margin="40,180,0,0" TextWrapping="Wrap" Text="{Binding HelloMsg}" VerticalAlignment="Top" Width="220"/>
-        <Button x:Name="btnLaunchApp" Content="Launch app" HorizontalAlignment="Left" Height="50" Margin="40,270,0,0" VerticalAlignment="Top" Width="220" Click="btnLaunchApp_Click"/>
+        <TextBox x:Name="helloMsg" HorizontalAlignment="Left" Height="75" Margin="40,180,0,0" TextWrapping="Wrap" PlaceholderText="Here you will see the results ..." Text="{Binding HelloMsg,Mode=TwoWay}" VerticalAlignment="Top" Width="220"/>
+        <Button x:Name="btnLaunchApp" Content="Trigger JS event" HorizontalAlignment="Left" Height="50" Margin="40,270,0,0" VerticalAlignment="Top" Width="220" Click="btnLaunchApp_Click"/>
+        <TextBox x:Name="tfMsgForJs" HorizontalAlignment="Left" Height="75" Margin="40,320,0,0" TextWrapping="Wrap" PlaceholderText="Type the js event name ..." Text="{Binding MsgForJs,Mode=TwoWay}" VerticalAlignment="Top" Width="220"/>
 
     </Grid>
 </Page>

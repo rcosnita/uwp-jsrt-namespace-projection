@@ -5,5 +5,22 @@
       <UniqueIdentifier>16087423-00ae-4a56-aeee-e6a73498fc14</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="events">
+      <UniqueIdentifier>{1e613570-2205-45bf-99f7-2af1310cad99}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Class1.cpp" />
+    <ClCompile Include="events\EventEmitter.cpp">
+      <Filter>events</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Class1.h" />
+    <ClInclude Include="events\EventsEmitter.h">
+      <Filter>events</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

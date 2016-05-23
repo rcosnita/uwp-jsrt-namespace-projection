@@ -9,8 +9,10 @@
 
 using namespace std;
 
-jsutils::ChakraTest::ChakraTest(TextBox^ textfield)
-    : textfield_(textfield)
+jsutils::ChakraTest::ChakraTest(TextBox^ textfield, EventEmitter^ eventEmitter, CoreDispatcher^ uiDispatcher)
+    : textfield_(textfield),
+      eventEmitter_(eventEmitter),
+      uiDispatcher_(uiDispatcher)
 {
     JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &runtime_);
     JsCreateContext(runtime_, &context_);
@@ -57,9 +59,22 @@ static std::wstring readFile(Platform::String^ fileName) {
 }
 
 void jsutils::ChakraTest::runApp(Platform::String^ fileName) {
-    unsigned int sourceContext = 0;
     auto appScript = readFile(fileName);
 
-    auto class1 = ref new WindowsRuntimeComponent1::Class1(textfield_);
+    JsRuntimeHandle runtimeHandleInner;
+    JsContextRef contextInner;
+
+    JsCreateRuntime(JsRuntimeAttributeNone, nullptr, &runtimeHandleInner);
+    JsCreateContext(runtimeHandleInner, &contextInner);
+    JsSetCurrentContext(contextInner);
+
+    JsProjectWinRTNamespace(L"WindowsRuntimeComponent1");
+    JsStartDebugging();
+
+    unsigned int sourceContext = 0;
+    auto class1 = ref new WindowsRuntimeComponent1::Class1(textfield_, eventEmitter_, uiDispatcher_);
     JsRunScript(appScript.c_str(), sourceContext++, fileName->Data(), nullptr);
+
+    JsSetCurrentContext(JS_INVALID_REFERENCE);
+    JsDisposeRuntime(runtimeHandleInner);
 }
